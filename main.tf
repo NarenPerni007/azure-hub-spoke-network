@@ -25,13 +25,13 @@ resource "azurerm_virtual_network" "hub" {
 
   subnet {
     # The firewall subnet name is reserved by Azure and must match exactly.
-    name           = "AzureFirewallSubnet"
-    address_prefix = "10.0.0.0/26"
+    name             = "AzureFirewallSubnet"
+    address_prefixes = ["10.0.0.0/26"]
   }
 
   subnet {
-    name           = "snet-management"
-    address_prefix = "10.0.1.0/24"
+    name             = "snet-management"
+    address_prefixes = ["10.0.1.0/24"]
   }
 }
 
@@ -110,8 +110,8 @@ resource "azurerm_virtual_network" "spoke_app" {
   tags                = local.common_tags
 
   subnet {
-    name           = "snet-workload"
-    address_prefix = "10.1.0.0/24"
+    name             = "snet-workload"
+    address_prefixes = ["10.1.0.0/24"]
   }
 }
 
@@ -123,8 +123,8 @@ resource "azurerm_virtual_network" "spoke_data" {
   tags                = local.common_tags
 
   subnet {
-    name           = "snet-workload"
-    address_prefix = "10.2.0.0/24"
+    name             = "snet-workload"
+    address_prefixes = ["10.2.0.0/24"]
   }
 }
 
